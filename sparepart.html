@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Katalog Lengkap - Grandong Performance</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+   <header>
+    <h1>Grandong</h1> <p>Specialist Performance Parts</p>
+    
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Search for parts (Velg, Knalpot, Brand... )">
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="sparepart.html" class="active">Katalog Part</a>
+            <a href="cart.html">Keranjang</a>
+        </div>
+        <div class="cart-icon">
+            🛒 <span id="cart-count">0</span>
+            <a href="cart.html">🛒</a>
+        </div>
+    </nav>
+</header>
+    <main style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+        <div class="katalog-header-container" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #1a1a1a;">
+            <h2 style="color: rgb(0, 0, 0); font-weight: bold; margin: 0; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-size: 1.2rem; ">GARAGE INVENTORY</h2>
+            
+            <div class="filter-dropdown-container" style="margin: 0; display: flex; align-items: center;">
+                <label for="kategori-select" style="color: #000000; font-weight: bold; margin-right: 10px; font-size: 16px; letter-spacing: 1px;">FILTER :</label>
+                <select id="kategori-select" class="select-gahar" onchange="filterKategori(this.value)">
+                    <option value="Semua">ALL PARTS</option>
+                    <option value="Velg">VELG</option>
+                    <option value="Ban">BAN</option>
+                    <option value="Pengereman">BRAKES</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="partList" class="car-grid"></div>
+    </main>
+
+    <div id="toast-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>

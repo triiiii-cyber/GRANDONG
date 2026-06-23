@@ -1,0 +1,543 @@
+/* --- RESET & BASIC STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 60px 20px;
+    border-bottom: 5px solid #2c3e50;
+}
+
+header h1 {
+    font-family: 'UnifrakturMaguntia', serif; /* Font Old English */
+    font-size: 5rem;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+header p {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.search-container {
+    margin: 40px 0;
+}
+
+#searchBar {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 0; /* Hanya garis bawah ala minimalis */
+    border: none;
+    border-bottom: 2px solid #333;
+    border-radius: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    outline: none;
+    background: transparent;
+}
+
+#searchBar:focus {
+    border-bottom-color: #ff2800;
+}
+
+.navbar {
+    background-color: #ffffff; /* Putih bersih ala web luxury car */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10%;
+    height: 50px; /* Lebih ramping */
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #ff0000; /* Merah Rosso Corsa khas Ferrari */
+}
+
+.cart-icon {
+    color: white;
+    margin-left: auto;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#cart-count {
+    background-color: #e74c3c;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    vertical-align: top;
+    margin-left: 5px;
+}
+
+/* --- HERO SECTION --- */
+.hero-banner {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('assets/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efek Parallax */
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.philosophy-section {
+    padding: 100px 20px;
+    background-color: #ffffff; /* Putih bersih ala Ferrari web */
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.philosophy-title {
+    font-family: 'UnifrakturMaguntia', serif; /* Font Old English */
+    font-size: 4rem;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+}
+
+.philosophy-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.philosophy-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.philosophy-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #888;
+    margin-bottom: 50px;
+}
+
+/* Tombol Minimalis ala High-End Brand */
+.btn-explore-minimal {
+    font-family: 'Inter', sans-serif;
+    display: inline-block;
+    padding: 15px 40px;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    transition: 0.4s;
+}
+
+.btn-explore-minimal:hover {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.contact-section {
+    padding: 80px 40px;
+    background-color: #aaaaaa; /* Putih bersih ala Ferrari web */
+    text-align: center;
+    padding: auto;
+}
+
+/* --- PRODUCT GRID --- */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- PRODUCT CARD --- */
+.car-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: all 0.34s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.car-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.car-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 15px;
+    transition: transform 0.34s ease;
+}
+
+/* Biar pas di-hover ada efek zoom halus tanpa ngerusak layout */
+.car-card:hover img {
+    transform: scale(1.05);
+}
+
+.badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #1c004f;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info h3 {
+    margin: 10px 0;
+    font-size: 1.25rem;
+    color: #2c3e50;
+}
+
+.brand {
+    color: #7f8c8d;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #27ae60;
+    margin: 10px 0;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-detail {
+    background-color: #90e3ff;
+    color: rgb(0, 0, 0);
+    flex: 2;
+}
+
+.btn-detail:hover { background-color: #6aa7bb; }
+
+.btn-cart {
+    background-color: #34495e;
+    color: white;
+    flex: 1;
+}
+
+.btn-cart:hover { background-color: #2c3e50; }
+
+/* --- DETAIL PAGE STYLES --- */
+#carDetail {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.detail-wrapper {
+    display: flex;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.detail-left { flex: 1; }
+.detail-img { width: 100%; height: 100%; object-fit: contain; }
+
+.detail-right {
+    flex: 1;
+    padding: 40px;
+}
+
+.price-detail {
+    color: #27ae60;
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.spec-list {
+    list-style: none;
+    margin: 20px 0;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.spec-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.description { margin-top: 30px; line-height: 1.6; }
+
+.btn-buy {
+    background-color: #27ae60;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 30px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    color: #2c3742;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/*Cart*/
+/* --- TAMPILAN KERANJANG SULTAN --- */
+.cart-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 30px;
+}
+
+/* List belanjaan yang rapi tapi simpel */
+#cart-items-list {
+    margin-bottom: 40px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    background: #ffffff; /* Putih bersih biar mahal */
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Shadow tipis biar estetik */
+    transition: 0.3s;
+}
+
+.cart-item:hover {
+    transform: scale(1.01); /* Efek goyang dikit pas di-hover */
+}
+
+.cart-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.item-info {
+    flex-grow: 1;
+    margin-left: 25px;
+}
+
+.item-info h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.item-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Tombol hapus yang nggak norak */
+.btn-remove {
+    background-color: transparent;
+    color: #ff2800; /* Merah Ferrari buat indikator bahaya/hapus */
+    border: 1px solid #ff2800;
+    font-size: 0.75rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-remove:hover {
+    background-color: #ff2800;
+    color: white;
+}
+
+/* Bagian ringkasan total belanja */
+.cart-summary {
+    text-align: right;
+    padding: 30px;
+    background: #ffffff;
+    border-top: 4px solid #1a1a1a;
+    border-radius: 0 0 12px 12px;
+}
+
+.cart-summary h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+#cart-total-price {
+    color: #27ae60; /* Hijau biar kerasa dapet barang baru */
+    font-weight: 700;
+}
+
+/*TOAST NOTIFICATION*/
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast-gahar {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 15px 25px;
+    border-left: 5px solid #ff2800;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+    font-family:'Inter', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.4s ease forwards;
+}
+/* --- DROPDOWN FILTER KATALOG GAHAR --- */
+.katalog-header-container {
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 15px !important;
+}
+
+.select-gahar {
+    -webkit-appearance: none; /* Buang paksa desain kotak default Windows/Mac */
+    -moz-appearance: none;
+    appearance: none;
+    
+    background-color: #0c0c0c !important; /* Hitam pekat maskulin */
+    color: #ffffff !important;
+    border: 2px solid #ff0000 !important; /* Border merah menyala Grandong */
+    padding: 10px 40px 10px 15px !important;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    letter-spacing: 2px;
+    border-radius: 0px; /* Siku kotak kaku ala racing culture */
+    
+    /* Pasang icon panah kustom berwarna merah (#ff0000) */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='50' fill='%23ff0000'><polygon points='0,0 100,0 50,50'/></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 12px 7px !important;
+    transition: all 0.3s ease;
+}
+
+/* Efek Sorot (Hover) pas Mouse Mendekat */
+.select-gahar:hover {
+    background-color: #000000 !important;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); /* Efek neon merah mendelik */
+}
+
+/* Biar list pilihan di dalamnya tetap hitam gahar saat melorot */
+.select-gahar option {
+    background-color: #0c0c0c;
+    color: #ffffff;
+    padding: 12px;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+    
+}
+
+.toast.exit {
+    animation: slideOut 0.4s ease forwards;
+}
+
+@keyframes slideOut {
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .detail-wrapper { flex-direction: column; }
+    .car-grid { padding: 20px; }
+}

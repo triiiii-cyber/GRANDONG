@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - Grandong Performance Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="sparepart.html">Katalog Part</a>
+            </div>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="cart-container">
+        <h1 class="philosophy-title" style="font-size: 3rem; text-align: center;">Your Garage Selection</h1>
+        
+        <div id="cart-items-list"></div>
+        
+<div class="cart-summary" style="background: #1a1a1a; padding: 25px; border-radius: 12px; color: white; margin-top: 20px; border: 1px solid #333;">
+    
+    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <input type="text" id="kode-promo" placeholder="KODE PROMO (Coba: UAS100)" style="flex: 1; padding: 12px; background: #111; border: 1px solid #444; color: white; border-radius: 4px; text-transform: uppercase; font-weight: bold;">
+        <button onclick="terapkanDiskon()" style="background: #333; color: white; font-weight: bold; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='#ff2800'" onmouseout="this.style.background='#333'">KLAIM</button>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+        <span style="color: #aaa;">Subtotal</span>
+        <span id="cart-subtotal" style="font-weight: bold;">Rp 0</span>
+    </div>
+    
+    <div id="baris-diskon" style="display: none; justify-content: space-between; margin-bottom: 12px; color: #27ae60;">
+        <span>Diskon Promo</span>
+        <span id="cart-diskon" style="font-weight: bold;">- Rp 0</span>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+        <span style="color: #aaa;">Pajak PPN (11%)</span>
+        <span id="cart-pajak" style="font-weight: bold;">Rp 0</span>
+    </div>
+    <hr style="border: 0.5px solid #444; margin: 15px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 1.2rem; font-weight: bold; letter-spacing: 1px;">TOTAL AKHIR</span>
+        <span id="cart-total-price" style="color: #ff2800; font-weight: 800; font-size: 1.8rem;">Rp 0</span>
+    </div>
+    <br>
+    <button class="btn-explore-minimal" style="width: 100%; padding: 15px; font-size: 1.1rem; background: #ff2800; color: black; font-weight: bold; border: none;" onclick="checkoutWhatsApp()">
+        CHECKOUT VIA WHATSAPP 🔥
+    </button>
+</div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
