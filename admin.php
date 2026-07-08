@@ -124,9 +124,15 @@ $all_parts = $query->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ff2800; padding-bottom: 10px; margin-bottom: 20px;">
-        <h1 style="border: none; padding: 0; margin: 0;">💀 GRANDONG - GARAGE CONTROL PANEL 💀</h1>
-        <a href="logout.php" style="background-color: #dc3545; color: white; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; text-transform: uppercase;">Logout System</a>
+    <h1 style="border: none; padding: 0; margin: 0;">GRANDONG - GARAGE CONTROL PANEL</h1>
+    
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <span style="color: #aaa; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+            Mechanic on Duty: <span style="color: #ff2800;"><?= htmlspecialchars($_SESSION['username'] ?? 'Diazz') ?></span>
+        </span>
+        <a href="logout.php" style="background-color: #dc3545; color: white; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; text-transform: uppercase;">Logout</a>
     </div>
+</div>
     <div class="form-container">
         <h2><?= $edit_data ? 'EDIT PERFORMANCE PART' : 'ADD NEW PERFORMANCE PART' ?></h2>
         <form action="admin.php" method="POST" enctype="multipart/form-data">
