@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keranjang Belanja - Grandong Performance Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -27,7 +27,34 @@
         <h1 class="philosophy-title" style="font-size: 3rem; text-align: center;">Your Garage Selection</h1>
         
         <div id="cart-items-list"></div>
-        
+
+        <div style="background: #111; padding: 25px; border-radius: 12px; color: white; border: 1px solid #333; margin-top: 20px; margin-bottom: 20px;">
+    <h3 style="color: #ff2800; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 1px solid #333; padding-bottom: 10px; font-family: 'Inter', sans-serif;">DATA PENGIRIMAN MEKANIK</h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div>
+            <label style="color: #aaa; font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Nama Penerima</label>
+            <input type="text" id="wa-nama" placeholder="Contoh: Diazz" style="width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #444; color: white; margin-top: 5px; border-radius: 4px;" required>
+        </div>
+        <div>
+            <label style="color: #aaa; font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">No. WhatsApp</label>
+            <input type="number" id="wa-kontak" placeholder="Contoh: 081316338598" style="width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #444; color: white; margin-top: 5px; border-radius: 4px;" required>
+        </div>
+        <div>
+            <label style="color: #aaa; font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Kota / Kabupaten</label>
+            <input type="text" id="wa-kota" placeholder="Contoh: Sukabumi" style="width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #444; color: white; margin-top: 5px; border-radius: 4px;" required>
+        </div>
+        <div>
+            <label style="color: #aaa; font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Kode Pos</label>
+            <input type="number" id="wa-kodepos" placeholder="Contoh: 43155" style="width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #444; color: white; margin-top: 5px; border-radius: 4px;" required>
+        </div>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <label style="color: #aaa; font-size: 0.8rem; font-weight: bold; text-transform: uppercase;">Detail Jalan & Catatan Mekanik</label>
+        <textarea id="wa-alamat" rows="2" placeholder="Contoh: Jl. Raya Cibolang No. 21. Tolong pakcing kayu yang aman gahar, Bray!" style="width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #444; color: white; margin-top: 5px; border-radius: 4px;" required></textarea>
+    </div>
+</div>
 <div class="cart-summary" style="background: #1a1a1a; padding: 25px; border-radius: 12px; color: white; margin-top: 20px; border: 1px solid #333;">
     
     <div style="display: flex; gap: 10px; margin-bottom: 20px;">
@@ -55,9 +82,14 @@
         <span id="cart-total-price" style="color: #ff2800; font-weight: 800; font-size: 1.8rem;">Rp 0</span>
     </div>
     <br>
-    <button class="btn-explore-minimal" style="width: 100%; padding: 15px; font-size: 1.1rem; background: #ff2800; color: black; font-weight: bold; border: none;" onclick="checkoutWhatsApp()">
-        CHECKOUT VIA WHATSAPP 🔥
-    </button>
+    <div style="display: flex; gap: 10px; margin-top: 15px;">
+        <button class="btn-explore-minimal" style="flex: 2; padding: 15px; font-size: 1.1rem; background: #ff2800; color: black; font-weight: bold; border: none; cursor: pointer;" onclick="checkoutWhatsApp()">
+            CHECKOUT VIA WHATSAPP 🔥
+        </button>
+        <button class="btn-explore-minimal" style="flex: 1; padding: 15px; font-size: 1.1rem; background: #333; color: white; font-weight: bold; border: none; cursor: pointer;" onclick="window.print()">
+            CETAK INVOICE 🖨️
+        </button>
+    </div>
 </div>
     </div>
     
