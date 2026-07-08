@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Katalog Lengkap - Grandong Performance</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.2">
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -30,14 +30,27 @@
         <div class="katalog-header-container" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #1a1a1a;">
             <h2 style="color: rgb(0, 0, 0); font-weight: bold; margin: 0; font-family: 'Inter', sans-serif; letter-spacing: 2px; font-size: 1.2rem; ">GARAGE INVENTORY</h2>
             
-            <div class="filter-dropdown-container" style="margin: 0; display: flex; align-items: center;">
-                <label for="kategori-select" style="color: #000000; font-weight: bold; margin-right: 10px; font-size: 16px; letter-spacing: 1px;">FILTER :</label>
-                <select id="kategori-select" class="select-gahar" onchange="filterKategori(this.value)">
-                    <option value="Semua">ALL PARTS</option>
-                    <option value="Velg">VELG</option>
-                    <option value="Ban">BAN</option>
-                    <option value="Pengereman">BRAKES</option>
-                </select>
+            <div class="filter-dropdown-container" style="margin: 0; display: flex; align-items: center; gap: 20px;">
+                <div>
+                    <label for="kategori-select" style="color: #000000; font-weight: bold; margin-right: 10px; font-size: 14px; letter-spacing: 1px;">KATEGORI :</label>
+                    <select id="kategori-select" class="select-gahar" onchange="terapkanFilterDanSort()">
+                        <option value="Semua">ALL PARTS</option>
+                        <option value="Velg">VELG</option>
+                        <option value="Ban">BAN</option>
+                        <option value="Pengereman">BRAKES</option>
+                        <option value="Mesin">MESIN</option>
+                        <option value="Interior">INTERIOR</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="sort-select" style="color: #000000; font-weight: bold; margin-right: 10px; font-size: 14px; letter-spacing: 1px;">URUTKAN :</label>
+                    <select id="sort-select" class="select-gahar" onchange="terapkanFilterDanSort()">
+                        <option value="default">Terbaru (Default)</option>
+                        <option value="termurah">Harga Termurah ⬆</option>
+                        <option value="termahal">Harga Termahal ⬇</option>
+                    </select>
+                </div>
             </div>
         </div>
 
