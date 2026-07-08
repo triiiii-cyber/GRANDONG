@@ -37,6 +37,34 @@ function displayAllParts(dataToRender) {
             </div>
         `;
     }
+    // --- EFEK 3D TILT HOLOGRAM (PURE JS) ---
+    var cards = document.querySelectorAll('.car-card');
+    
+    cards.forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left; // Posisi X kursor di dalam kartu
+            var y = e.clientY - rect.top;  // Posisi Y kursor di dalam kartu
+            
+            var centerX = rect.width / 2;
+            var centerY = rect.height / 2;
+            
+            // Kalkulasi rotasi (Maksimal 10 derajat agar tidak terlalu miring)
+            var rotateX = ((y - centerY) / centerY) * -10; 
+            var rotateY = ((x - centerX) / centerX) * 10;
+            
+            card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02)';
+            card.style.transition = 'none'; // Matikan transisi saat kursor bergerak biar responsif
+            card.style.zIndex = '10';       // Angkat kartu ke atas
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            // Kembalikan kartu ke posisi normal dengan transisi mulus saat kursor pergi
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            card.style.transition = 'transform 0.5s ease';
+            card.style.zIndex = '1';
+        });
+    });
 }
 
 var searchBar = document.getElementById('searchBar');
@@ -416,6 +444,14 @@ function checkoutWhatsApp() {
     pesan += "*TOTAL AKHIR: " + formatRupiah(total) + "*\n";
     pesan += "============================\n\n";
 
+    // --- EASTER EGG: SUARA ENGINE START NO PROBLEM ---
+    var engineSound = new Audio('https://www.myinstants.com/media/sounds/engine-start-no-problem.mp3');
+    engineSound.volume = 0.8; // Set volume 80% biar pas menderu gak terlalu pecah
+    engineSound.play();
+    
+    // Tampilkan toast tambahan
+    showGaharToast("STARTING ENGINE... 🏁");
+
     var link_wa = "https://wa.me/" + nomor_wa + "?text=" + encodeURIComponent(pesan);
     window.open(link_wa, '_blank');
 }
@@ -441,41 +477,68 @@ window.onload = function () {
         setTimeout(function() {
             tampilkanPesanan();
         }, 50);
-        return; // Berhenti di sini khusus untuk keranjang
+        return; 
     }
 
     // 4. Eksekusi khusus halaman Katalog & Detail - Wajib Fetch DB dulu!
     var partList = document.getElementById('partList');
+    
+    // TAMPILKAN ANIMASI TENGKORAK GAHAR DI SINI!
     if (partList) {
-        partList.innerHTML = '<p style="color:white; text-align:center;">Memuat mesin Grandong...</p>';
+        partList.innerHTML = `
+            <div class="loader-container">
+                <svg class="skull-loader" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Kepala Atas -->
+                    <g fill="#ff0000">
+                        <path d="M20,50 C20,15 80,15 80,50 C80,65 70,70 65,70 L35,70 C30,70 20,65 20,50 Z" />
+                        <!-- Mata (Bolong Hitam) -->
+                        <circle cx="35" cy="45" r="9" fill="#1a1a1a" />
+                        <circle cx="65" cy="45" r="9" fill="#1a1a1a" />
+                        <!-- Hidung -->
+                        <path d="M50,55 L45,67 L55,67 Z" fill="#1a1a1a" />
+                    </g>
+                    <!-- Rahang Bawah (Yang Bisa Mangap) -->
+                    <g class="skull-jaw" fill="#ff0000">
+                        <path d="M35,73 L65,73 L58,90 L42,90 Z" />
+                        <!-- Garis Gigi -->
+                        <line x1="42" y1="73" x2="42" y2="90" stroke="#1a1a1a" stroke-width="2" />
+                        <line x1="50" y1="73" x2="50" y2="90" stroke="#1a1a1a" stroke-width="2" />
+                        <line x1="58" y1="73" x2="58" y2="90" stroke="#1a1a1a" stroke-width="2" />
+                    </g>
+                </svg>
+                <div class="loader-text">AWAKENING GRANDONG...</div>
+            </div>
+        `;
     }
 
-    // Tembak API lokal get_parts.php
-    fetch('get_parts.php')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            if (data.error) {
-                if (partList) partList.innerHTML = '<p style="color:red; text-align:center;">Error: ' + data.error + '</p>';
-                return;
-            }
+    // TAHAN 1.2 DETIK SEBELUM FETCH DATA
+    setTimeout(function() {
+        fetch('get_parts.php')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.error) {
+                    if (partList) partList.innerHTML = '<p style="color:red; text-align:center;">Error: ' + data.error + '</p>';
+                    return;
+                }
 
-            // Suntikkan data dari database ke variabel global JS
-            spareparts = data;
+                // Suntikkan data dari database ke variabel global JS
+                spareparts = data;
 
-            // Render halaman sesuai posisi user saat ini
-            if (document.getElementById('partList')) {
-                displayAllParts(spareparts);
-            } 
-            if (document.getElementById('carDetail')) {
-                displayPartDetail();
-            } 
-        })
-        .catch(function(err) {
-            if (partList) partList.innerHTML = '<p style="color:red; text-align:center;">Koneksi gagal: ' + err + '</p>';
-            console.error("Fetch error:", err);
-        });
+                // Render halaman sesuai posisi user saat ini
+                if (document.getElementById('partList')) {
+                    displayAllParts(spareparts); // Kartu baru digambar setelah 1.2 detik
+                } 
+                if (document.getElementById('carDetail')) {
+                    displayPartDetail();
+                } 
+            })
+            .catch(function(err) {
+                if (partList) partList.innerHTML = '<p style="color:red; text-align:center;">Koneksi gagal: ' + err + '</p>';
+                console.error("Fetch error:", err);
+            });
+    }, 1200); 
 };
 
 // ==========================================
@@ -502,15 +565,35 @@ function showGaharToast(pesan) {
         }, 400);
     }, 3000);
 }
-function filterKategori(kategoriDipilih) {
-    // Logika Inti: Menyaring data dari database global spareparts
+
+function terapkanFilterDanSort() {
+    // 1. Tangkap nilai dari kedua dropdown
+    var kategoriDipilih = document.getElementById('kategori-select').value;
+    var sortDipilih = document.getElementById('sort-select').value;
+
+    var hasilData = [];
+
+    // 2. PROSES FILTERING KATEGORI
     if (kategoriDipilih === 'Semua') {
-        displayAllParts(spareparts); // Tampilkan semua tanpa filter
+        hasilData = spareparts.slice(); // Salin semua data jika pilih "All Parts"
     } else {
-        var hasilFilter = spareparts.filter(function(item) {
-            // Pengaman huruf kecil agar pencocokan teks dari DB akurat
+        hasilData = spareparts.filter(function(item) {
             return item.kategori.toLowerCase() === kategoriDipilih.toLowerCase();
         });
-        displayAllParts(hasilFilter); // Kirim hasil filter ke UI katalog
     }
+
+    // 3. PROSES SORTING HARGA
+    if (sortDipilih === 'termurah') {
+        hasilData.sort(function(a, b) {
+            return a.harga - b.harga; // Urutkan dari kecil ke besar
+        });
+    } else if (sortDipilih === 'termahal') {
+        hasilData.sort(function(a, b) {
+            return b.harga - a.harga; // Urutkan dari besar ke kecil
+        });
+    }
+    // Jika 'default', array dibiarkan sesuai urutan asli dari database
+
+    // 4. LEMPAR KE UI
+    displayAllParts(hasilData);
 }
